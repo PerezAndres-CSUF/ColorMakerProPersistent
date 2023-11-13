@@ -10,9 +10,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.SeekBar
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 const val TAG = "MainActivity"
+const val RED_KEY = "red value"
+const val GREEN_KEY = "green value"
+const val BLUE_KEY = "blue value"
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,15 +43,21 @@ class MainActivity : AppCompatActivity() {
         val green = greenSeekBar.progress*2.55f// Hardcoded green value (you can modify this)
         val blue = blueSeekBar.progress*2.55f// Hardcoded blue value (you can modify this)
 
-
+//        Muted to test setter
         Log.i(TAG, "red value is" + red)
         Log.i(TAG, "green value is" + green)
         Log.i(TAG, "blue value is" + blue)
         // Create a color using RGB values
         val color = android.graphics.Color.rgb(red.toInt(), green.toInt(), blue.toInt())
 
+        this.colorViewModel.setRGB(red.toInt(), green.toInt(), blue.toInt())
+
         // Update the color of the colorBox ImageView
         colorBox.setBackgroundColor(color)
+    }
+
+    private val colorViewModel: MyViewModel by lazy {
+        ViewModelProvider(this)[MyViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +80,20 @@ class MainActivity : AppCompatActivity() {
 
         resetButton = findViewById(R.id.Reset_Button)
 
+        // Before Listening, set values to last saved instance
+        redSeekBar.progress = savedInstanceState?.getInt(RED_KEY, 0) ?: 39
+        greenSeekBar.progress = savedInstanceState?.getInt(GREEN_KEY, 0) ?: 39
+        blueSeekBar.progress = savedInstanceState?.getInt(BLUE_KEY, 0) ?: 39
 
+        colorViewModel.setRGB(redSeekBar.progress, greenSeekBar.progress, blueSeekBar.progress)
+
+        Log.i(TAG, "red saved" + redSeekBar.progress)
+        Log.i(TAG, "green saved" + greenSeekBar.progress)
+        Log.i(TAG, "blue saved" + blueSeekBar.progress)
+
+        updateColor()
+
+        // Listeners After this line
         redSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 // Red switch is on, set the red component to a specific value (e.g., 255).
@@ -213,5 +236,33 @@ class MainActivity : AppCompatActivity() {
             colorBox.setBackgroundColor(color)
         }
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d(TAG , "instance state saved")
+        outState.putInt(RED_KEY, colorViewModel.getRed())
+        outState.putInt(GREEN_KEY, colorViewModel.getGreen())
+        outState.putInt(BLUE_KEY, colorViewModel.getBlue())
+    }
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart called")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume called")
+    }
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause called")
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop called")
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy called")
     }
 }
