@@ -1,1 +1,12 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/2sJUxXrl)
+# Assignment 3 Color Picker Submission
+
+My submission for CPSC 411a, Section 01
+
+# My Information
+
+* Name: Andres Perez
+* CWID: 9474
+* Email: perez.andres@csu.fullerton.edu
+
+# Instructions
+Download and run on android studio
