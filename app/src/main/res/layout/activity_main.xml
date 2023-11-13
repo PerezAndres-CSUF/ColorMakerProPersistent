@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This LinearLayout is to become the color display-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Color_Maker"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#646464"
+    android:orientation="vertical">
+
+    <!--This vertical layout holds all three RGB control boxes-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@color/grey"
+        android:padding="10dp">
+
+        <!--This is horizontal layout combines a switch, seekbar and text bar -->
+        <!--Controls to color Red-->
+        <LinearLayout
+            android:id="@+id/Red_Controls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:padding="10dp">
+
+            <!--Changed from switch-->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/Red_Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:trackTint="@color/red"
+                app:thumbTint="@color/yellow"/>
+
+            <SeekBar
+                android:id="@+id/Red_SeekBar"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/Red_EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="1.000"
+                android:ems="3"
+                android:inputType="numberDecimal"
+                android:text="@string/default_color_intensity"
+                android:gravity="center"
+                tools:ignore="labelFor" />
+
+        </LinearLayout>        <!--End Red rgb controls-->
+
+        <!--This is a horizontal layout combines a switch, seekbar and text bar -->
+        <!--Controls to color Green-->
+        <LinearLayout
+            android:id="@+id/Green_Controls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:padding="10dp">
+
+            <!--Changed from switch-->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/Green_Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:trackTint="@color/green"
+                app:thumbTint="@color/yellow"/>
+
+            <SeekBar
+                android:id="@+id/Green_SeekBar"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/Green_EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="1.000"
+                android:ems="3"
+                android:inputType="numberDecimal"
+                android:text="@string/default_color_intensity"
+                android:gravity="center"
+                tools:ignore="labelFor" />
+
+        </LinearLayout>        <!--End Green rgb controls-->
+
+        <!--This is horizontal layout combines a switch, seekbar and text bar -->
+        <!--Controls to color Blue-->
+        <LinearLayout
+            android:id="@+id/Blue_Controls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:padding="10dp">
+
+            <!--Changed from switch-->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/Blue_Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:trackTint="@color/blue"
+                app:thumbTint="@color/yellow"/> <!--Don't know why app instead of android works-->
+
+            <SeekBar
+                android:id="@+id/Blue_SeekBar"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/Blue_EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="1.000"
+                android:ems="3"
+                android:inputType="numberDecimal"
+                android:text="@string/default_color_intensity"
+                android:gravity="center"
+                tools:ignore="labelFor" />
+
+        </LinearLayout>        <!--End Blue rgb controls-->
+
+    </LinearLayout>        <!--End RGB controls-->
+
+    <!--Last part of layout is the rest button-->
+    <Button
+        android:id="@+id/Reset_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_label"
+        android:textSize="20sp"/>
+
+</LinearLayout>

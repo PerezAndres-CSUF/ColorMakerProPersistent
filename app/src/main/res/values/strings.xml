@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Persistence</string>
+    <string name="instruction">Edit values below to change box color</string>
+    <string name="default_color_intensity">1.000</string>
+    <string name="reset_label">reset</string>
+    <string name="image_description">color box</string>
+</resources>
